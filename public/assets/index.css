@@ -1,0 +1,10 @@
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #fefbe9;
+}
+
+#root-react {
+	display: flex;
+	justify-content: center;
+}
