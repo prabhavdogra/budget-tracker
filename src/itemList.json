@@ -1,0 +1,18 @@
+{
+	"itemsList": [
+		{ 
+			"key": 1, 
+			"itemName": "Housing Expense", 
+			"cost": 10000 
+		},
+		{ 
+			"key": 2, 
+			"itemName": "Food Expenses", 
+			"cost": 20000 },
+		{ 
+			"key": 3, 
+			"itemName": "Valentine's Day Gift", 
+			"cost": 5000 
+		}
+	]
+}

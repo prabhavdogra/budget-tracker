@@ -1,8 +1,21 @@
+#app {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 #app-div {
 	display: flex;
 	justify-content: center;
 	width: 100%;
 	background-color: #fefbe9;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+#table-heading {
+	text-align: center;
+	font-family: 'Quicksand', sans-serif;	
 }
 
 #item-list {
@@ -10,10 +23,9 @@
 	flex-direction: column;
 	width: 100%;
 	margin-top: 6rem;
-	margin-bottom: 4em;
-	padding-bottom: 1rem;
 	padding-bottom: 3rem;
-	border-radius: 1em;
+	border-top-right-radius: 1rem;
+	border-top-left-radius: 1rem;
 	background-color: #e1eedd;
 	margin-left: 12.5%;
 	margin-right: 12.5%;
@@ -41,7 +53,7 @@
 }
 
 #item-name {
-	font-size: 1em;
+	font-size: 1rem;
 	color: #dddbdb;
 	font-family: 'Roboto', sans-serif;
 	font-weight: bold;
@@ -58,9 +70,9 @@
 #close {
 	background-color: rgb(175, 2, 2);	
 	border: none;
-	color: #fafafa;
+	color: #afafaf;
 	font-family: 'Quicksand', sans-serif;
-	font-size: 1.5em;
+	font-size: 1.3rem;
 	padding-right: 3%;
 	padding-left: 2.5%;
 	border-top-right-radius: 1rem;
@@ -68,6 +80,89 @@
 }
 
 #close:hover {
+	color: #fafafa;
+}
+
+#add-item-div {
+	display: flex;
+	justify-content: center;
+	width: 75%;
+	background-color: rgb(245, 140, 140);
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+}
+
+#add-item {
+	width: 75%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem 0rem 0.8rem 0rem ;
+}
+
+#expense-name-input {
+	width: 100%;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+#expense-amount-input {
+	width: 100%;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+input[type=text] {
+	border: 2px red solid;
+	height: 60%;
+	font-family: 'Quicksand', sans-serif;
+	border-radius: 0.5rem;
+	color: #c5c5c5;
+	font-size: 1rem;
+	background-color: #2e2e2e;	
+}
+
+#add-div {
+	display: flex;
+	align-items: center;
+}
+
+#add-btn {
+	padding: 0.7em 2em 0.7em 2em;
 	background-color: rgb(175, 2, 2);
-	color: rgb(138, 138, 138);
+	border: 1px black solid;
+	color: #afafaf;
+	border-radius: 1rem;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 0.9rem;
+
+}
+
+#add-btn:hover {
+	color: #fafafa;
+}
+
+#net-expense {
+	font-family: 'Quicksand', sans-serif;
+	padding-top: 1rem;
+	font-size: 2rem;
+}
+
+.fade-out {
+	animation: slit-out-vertical 0.3s ease-in both;
+}
+
+@keyframes slit-out-vertical {
+	0% {
+	  /* -webkit-transform: translateZ(0) rotateY(0);
+			  transform: translateZ(0) rotateY(0); */
+	  opacity: 1;
+	}
+	54% {
+	  /* -webkit-transform: translateZ(-160px) rotateY(87deg);
+			  transform: translateZ(-160px) rotateY(87deg); */
+	  opacity: 1;
+	}
+	100% {
+	  /* -webkit-transform: translateZ(-800px) rotateY(90deg);
+			  transform: translateZ(-800px) rotateY(90deg); */
+	  opacity: 0.001;
+	}
 }
