@@ -28,21 +28,19 @@ function App() {
 		netExpense = parseInt(netExpense) - parseInt(props.cost);
 		console.log(netExpense);
 		setItemsList(newItemsList);
-		// const el = document.getElementById("item-" + props.key);
-		// el.classList.add("fade-out");
-	};
+	};	
 	const addItem = () => {
 		const newItemsList = itemsList;
 		const key = newItemsList.length + 1;
 		const itemName = document.getElementById("expense-name-input").value;
 		const cost = document.getElementById("expense-amount-input").value;
-		if(!isNaN(cost)) {
+		if(!isNaN(cost) && cost > 0) {
 			newItemsList.push({key, itemName, cost});	
 			setNetExpense(netExpense);
 			setItemsList(newItemsList);
 		}
 		else {
-			alert("The amount must be an integer.");	
+			alert("The amount must be a positive integer.");	
 		}
 	}
 	return (
