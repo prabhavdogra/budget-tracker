@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import "./assets/app.css";
 
@@ -23,10 +23,11 @@ function App() {
 	var [itemsList, setItemsList] = useState(itemsList_);
 	var [netExpense, setNetExpense] = useState(0);
 	netExpense = 0;
+	for(var i = 0; i < itemsList.length; i++)
+		netExpense += parseInt(itemsList[i].cost);
 	const removeItem = (props) => {
 		const newItemsList = itemsList.filter(item => item.key !== props.key);
-		netExpense = parseInt(netExpense) - parseInt(props.cost);
-		console.log(netExpense);
+		netExpense += parseInt(props.cost);
 		setItemsList(newItemsList);
 	};	
 	const addItem = () => {
@@ -34,10 +35,11 @@ function App() {
 		const key = newItemsList.length + 1;
 		const itemName = document.getElementById("expense-name-input").value;
 		const cost = document.getElementById("expense-amount-input").value;
+		netExpense += parseInt(cost);
 		if(!isNaN(cost) && cost > 0) {
 			newItemsList.push({key, itemName, cost});	
 			setNetExpense(netExpense);
-			setItemsList(newItemsList);
+			setItemsList([...newItemsList]);
 		}
 		else {
 			alert("The amount must be a positive integer.");	
@@ -48,20 +50,19 @@ function App() {
 			<div id="app-div">
 				<div id="item-list">
 					<div id="table-heading"><h2>Expenses Table</h2></div>
-					{itemsList.map((props) => {
-						const { key, itemName, cost } = props;
-						const itemKey = "item-" + key;
-						netExpense += parseInt(cost);
-						return (
-							<div className="item-complete" id={itemKey}>
-								<div id="item">
-									<div id="item-name">{itemName}</div>
-									<div id="cost">{cost}</div>
+						{itemsList.map((props) => {
+							const { key, itemName, cost } = props;
+							const itemKey = "item-" + key;
+							return (
+								<div className="item-complete" id={itemKey} key={key}>
+									<div id="item">
+										<div id="item-name">{itemName}</div>
+										<div id="cost">{cost}</div>
+									</div>
+									<button id="close" onClick={() => removeItem(props)}> X </button>
 								</div>
-								<button id="close" onClick={() => removeItem(props)}> X </button>
-							</div>
-						);
-					})}
+							);
+						})}
 				</div>
 			</div>
 			<div id="add-item-div">
