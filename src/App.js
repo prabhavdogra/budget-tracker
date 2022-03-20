@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import "./assets/app.css";
 
-const itemsList_ = [
+var itemsList_ = [
 	{ 
 		key: 1, 
 		itemName: "Housing Expense", 
@@ -20,6 +20,12 @@ const itemsList_ = [
 ];
 
 function App() {
+	if(localStorage.getItem('itemsList') === null) {
+		window.localStorage.setItem('itemsList', JSON.stringify(itemsList_));
+	} 
+	else {
+		itemsList_ = JSON.parse(localStorage.getItem('itemsList'));
+	}
 	var [itemsList, setItemsList] = useState(itemsList_);
 	var [netExpense, setNetExpense] = useState(0);
 	netExpense = 0;
@@ -29,6 +35,7 @@ function App() {
 		const newItemsList = itemsList.filter(item => item.key !== props.key);
 		netExpense += parseInt(props.cost);
 		setItemsList(newItemsList);
+		window.localStorage.setItem('itemsList', JSON.stringify(newItemsList));
 	};	
 	const addItem = () => {
 		const newItemsList = itemsList;
@@ -40,6 +47,7 @@ function App() {
 			newItemsList.push({key, itemName, cost});	
 			setNetExpense(netExpense);
 			setItemsList([...newItemsList]);
+			window.localStorage.setItem('itemsList', JSON.stringify(newItemsList));
 		}
 		else {
 			alert("The amount must be a positive integer.");	
